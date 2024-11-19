@@ -28,7 +28,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         '''
-        This function si responsible for data trnasformation
+        This function is responsible for data trnasformation
         
         '''
         try:
@@ -43,8 +43,9 @@ class DataTransformation:
 
             num_pipeline= Pipeline(
                 steps=[
-                ("imputer",SimpleImputer(strategy="median")),
-                ("scaler",StandardScaler())
+                ("imputer",SimpleImputer(strategy="median")),# Fills missing values with the median.
+                ("scaler",StandardScaler()) # Scales data to have zero mean and unit variance.
+    ]
 
                 ]
             )
@@ -52,9 +53,9 @@ class DataTransformation:
             cat_pipeline=Pipeline(
 
                 steps=[
-                ("imputer",SimpleImputer(strategy="most_frequent")),
-                ("one_hot_encoder",OneHotEncoder()),
-                ("scaler",StandardScaler(with_mean=False))
+                ("imputer",SimpleImputer(strategy="most_frequent")), # Fills missing values with the most frequent value.
+                ("one_hot_encoder",OneHotEncoder()), # Converts categories to one-hot encoding.
+                ("scaler",StandardScaler(with_mean=False)) # Scales encoded features (avoids centering for sparse matrices).
                 ]
 
             )
