@@ -20,7 +20,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl")
+    preprocessor_obj_file_path=os.path.join('artifacts',"preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
@@ -45,9 +45,9 @@ class DataTransformation:
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),# Fills missing values with the median.
                 ("scaler",StandardScaler()) # Scales data to have zero mean and unit variance.
-    ]
-
                 ]
+
+                
             )
 
             cat_pipeline=Pipeline(
@@ -70,7 +70,7 @@ class DataTransformation:
 
                 ]
 
-
+                
             )
 
             return preprocessor
